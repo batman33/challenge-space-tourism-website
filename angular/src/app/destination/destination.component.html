@@ -1,0 +1,33 @@
+<main id="main" class="grid-container grid-container--destination flow">
+  <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
+
+  <picture id="moon-image">
+    <source srcset="{{activeItem && activeItem.images.webp}}" type="image/webp">
+    <img src="{{activeItem && activeItem.images.png}}" alt="the {{activeItem && activeItem.name}}">
+  </picture>
+
+  <div class="tab-list underline-indicators flex" role="tablist" aria-label="destination list">
+    <button class="uppercase ff-sans-cond text-accent letter-spacing-2"
+            *ngFor="let item of items; index as i;"
+            (click)="change(i)"
+            [attr.aria-selected]="i === active ? 'true' : 'false'"
+            role="tab">{{item.name}}
+    </button>
+  </div>
+  <article class="destination-info flow">
+    <h2 class="fs-800 uppercase ff-serif">{{activeItem && activeItem.name}}</h2>
+
+    <p>{{activeItem && activeItem.description}}</p>
+
+    <div class="destination-meta flex">
+      <div>
+        <h3 class="text-accent fs-200 uppercase">Avg. distance</h3>
+        <p class="ff-serif uppercase">{{activeItem && activeItem.distance}}</p>
+      </div>
+      <div>
+        <h3 class="text-accent fs-200 uppercase">Est. travel time</h3>
+        <p class="ff-serif uppercase">{{activeItem && activeItem.travel}}</p>
+      </div>
+    </div>
+  </article>
+</main>

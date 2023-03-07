@@ -1,0 +1,23 @@
+<main id="main" class="grid-container grid-container--technology flow">
+  <h1 class="numbered-title"><span aria-hidden="true">03</span> Space launch 101</h1>
+
+  <div class="dot-indicators-2 flex" role="tablist" aria-label="technology list">
+    <button class="ff-serif fs-600"
+            *ngFor="let item of items; index as i;"
+            (click)="change(i)"
+            [attr.aria-selected]="i === active ? 'true' : 'false'"
+            role="tab">{{i + 1}}
+    </button>
+  </div>
+  <article class="technology-details flow">
+    <header>
+      <h2 class="text-accent fs-300 ff-serif uppercase">The terminology...</h2>
+      <p class="fs-700 uppercase ff-serif">{{activeItem && activeItem.name}}</p>
+    </header>
+    <p>{{activeItem && activeItem.description}}</p>
+  </article>
+  <picture id="capsule-image">
+    <img class="landscape" src="{{activeItem && activeItem.images.landscape}}" alt="{{activeItem && activeItem.name}}">
+    <img class="portrait" src="{{activeItem && activeItem.images.portrait}}" alt="{{activeItem && activeItem.name}}">
+  </picture>
+</main>

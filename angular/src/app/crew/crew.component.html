@@ -1,0 +1,25 @@
+<main id="main" class="grid-container grid-container--crew flow">
+  <h1 class="numbered-title"><span aria-hidden="true">02</span> Meet your crew</h1>
+
+  <div class="dot-indicators flex" role="tablist" aria-label="crew member list">
+    <button
+      *ngFor="let item of items; index as i;"
+      (click)="change(i)"
+      [attr.aria-selected]="i === active ? 'true' : 'false'"
+      role="tab"><span class="sr-only">The {{item.name}}</span></button>
+  </div>
+
+  <article class="crew-details flow">
+    <header class="flow flow--space-small">
+      <h2 class="fs-600 ff-serif uppercase">{{activeItem && activeItem.role}}</h2>
+      <p class="fs-700 uppercase ff-serif">{{activeItem && activeItem.name}}</p>
+    </header>
+    <p>{{activeItem && activeItem.bio}}</p>
+  </article>
+
+
+  <picture id="commander-image">
+    <source srcset="{{activeItem && activeItem.images.webp}}" type="image/webp">
+    <img src="{{activeItem && activeItem.images.png}}" alt="{{activeItem && activeItem.name}}">
+  </picture>
+</main>
